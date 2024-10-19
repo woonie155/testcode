@@ -5,7 +5,9 @@ import com.example.demo.unit.order.Order;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
 
+@Getter
 public class CafeKiosk {
 
     private final List<Beverage> beverages = new ArrayList<>();
