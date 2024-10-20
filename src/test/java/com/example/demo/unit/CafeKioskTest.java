@@ -7,10 +7,12 @@ import com.example.demo.unit.beverage.Americano;
 import com.example.demo.unit.beverage.Latte;
 import com.example.demo.unit.order.Order;
 import java.time.LocalDateTime;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CafeKioskTest {
 
+    @DisplayName("음료 1개를 추가하면 주문 목록에 담긴다.")
     @Test
     void add() {
         CafeKiosk cafeKiosk = new CafeKiosk();
@@ -68,8 +70,10 @@ class CafeKioskTest {
         assertThat(cafeKiosk.getBeverages()).isEmpty();
     }
 
+    @DisplayName("주문 목록에 담긴 상품들의 총 금액을 계산할 수 있다.")
     @Test
     void calculateTotalPrice(){
+        //given
         CafeKiosk cafeKiosk = new CafeKiosk();
         Americano americano = new Americano();
         Latte latte = new Latte();
@@ -77,7 +81,10 @@ class CafeKioskTest {
         cafeKiosk.add(americano);
         cafeKiosk.add(latte);
 
+        //when
         int totalPrice = cafeKiosk.calculateTotalPrice();
+
+        //then
         assertThat(totalPrice).isEqualTo(8500);
     }
 
@@ -94,13 +101,13 @@ class CafeKioskTest {
         assertThat(order.getBeverages().get(0).getName()).isEqualTo("아메리카노");
     }
 
+    @DisplayName("영업 시작 시간 이전에는 주문을 생성할 수 없다.")
     @Test
     void createOrderOutsideOpenTime(){
         CafeKiosk cafeKiosk = new CafeKiosk();
         Americano americano = new Americano();
 
         cafeKiosk.add(americano);
-
 
         assertThatThrownBy(() ->
                 cafeKiosk.createOrder(LocalDateTime.of(2024,10,20,9,59)))
