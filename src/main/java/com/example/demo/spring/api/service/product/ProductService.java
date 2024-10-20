@@ -1,9 +1,9 @@
-package com.example.demo.spring.domain.product.api.service.product;
+package com.example.demo.spring.api.service.product;
 
+import com.example.demo.spring.api.service.product.response.ProductResponse;
 import com.example.demo.spring.domain.product.Product;
 import com.example.demo.spring.domain.product.ProductRepository;
 import com.example.demo.spring.domain.product.ProductSellingStatus;
-import com.example.demo.spring.domain.product.api.service.product.response.ProductResponse;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
