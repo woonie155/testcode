@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.example.demo.spring.api.controller.order.request.OrderCreateRequest;
 import com.example.demo.spring.api.service.order.response.OrderResponse;
+import com.example.demo.spring.domain.order.OrderRepository;
+import com.example.demo.spring.domain.orderproduct.OrderProductRepository;
 import com.example.demo.spring.domain.product.Product;
 import com.example.demo.spring.domain.product.ProductRepository;
 import com.example.demo.spring.domain.product.ProductSellingStatus;
@@ -11,6 +13,7 @@ import com.example.demo.spring.domain.product.ProductType;
 import java.time.LocalDateTime;
 import java.util.List;
 import org.assertj.core.groups.Tuple;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,16 @@ class OrderServiceTest {
 
     @Autowired private ProductRepository productRepository;
     @Autowired private OrderService orderService;
+    @Autowired private OrderRepository orderRepository;
+    @Autowired private OrderProductRepository orderProductRepository;
+
+
+    @AfterEach
+    void tearDown(){
+        orderProductRepository.deleteAllInBatch();
+        productRepository.deleteAllInBatch();
+        orderRepository.deleteAllInBatch();
+    }
 
     @DisplayName("주문번호 리스트를 받아 주문을 생성한다.")
     @Test
