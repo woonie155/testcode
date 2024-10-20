@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 public enum ProductSellingStatus {
 
     SELLING("판매중"),
+
     HOLD("판매보류"),
     STOP_SELLING("판매중지");
 
