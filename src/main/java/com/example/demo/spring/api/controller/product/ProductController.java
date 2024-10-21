@@ -1,10 +1,12 @@
 package com.example.demo.spring.api.controller.product;
 
+import com.example.demo.spring.api.controller.product.dto.request.ProductCreateRequest;
 import com.example.demo.spring.api.service.product.ProductService;
 import com.example.demo.spring.api.service.product.response.ProductResponse;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
@@ -18,4 +20,8 @@ public class ProductController {
         return productService.getSellingProducts();
     }
 
+    @PostMapping("api/v1/products/new")
+    public void createProduct(ProductCreateRequest request){
+        productService.createProduct(request);
+    }
 }
