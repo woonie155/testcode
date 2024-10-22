@@ -5,8 +5,10 @@ import com.example.demo.spring.domain.product.ProductSellingStatus;
 import com.example.demo.spring.domain.product.ProductType;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 public class ProductCreateRequest {
     private ProductType type;
     private ProductSellingStatus sellingStatus;
