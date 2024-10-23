@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
+import com.example.demo.spring.IntegrationTestSupport;
 import com.example.demo.spring.api.client.mail.MailSendClient;
 import com.example.demo.spring.domain.history.mail.MailSendHistory;
 import com.example.demo.spring.domain.history.mail.MailSendHistoryRepository;
@@ -16,18 +17,16 @@ import com.example.demo.spring.domain.orderproduct.OrderProductRepository;
 import com.example.demo.spring.domain.product.Product;
 import com.example.demo.spring.domain.product.ProductRepository;
 import com.example.demo.spring.domain.product.ProductType;
+import jakarta.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
-@SpringBootTest
-class OrderStatisticsServiceTest {
+@Transactional
+class OrderStatisticsServiceTest extends IntegrationTestSupport {
 
     @Autowired
     private OrderStatisticsService orderStatisticsService;
@@ -44,16 +43,14 @@ class OrderStatisticsServiceTest {
     @Autowired
     private MailSendHistoryRepository mailSendHistoryRepository;
 
-    @MockBean
-    private MailSendClient mailSendClient;
 
-    @AfterEach
-    void tearDown() {
-        orderProductRepository.deleteAllInBatch();
-        orderRepository.deleteAllInBatch();
-        productRepository.deleteAllInBatch();
-        mailSendHistoryRepository.deleteAllInBatch();
-    }
+//    @AfterEach
+//    void tearDown() {
+//        orderProductRepository.deleteAllInBatch();
+//        orderRepository.deleteAllInBatch();
+//        productRepository.deleteAllInBatch();
+//        mailSendHistoryRepository.deleteAllInBatch();
+//    }
 
     @DisplayName("결제완료 주문들을 조회하여 매출 통계 메일을 전송한다.")
     @Test

@@ -3,6 +3,7 @@ package com.example.demo.spring.api.service.order;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import com.example.demo.spring.IntegrationTestSupport;
 import com.example.demo.spring.api.controller.order.request.OrderCreateRequest;
 import com.example.demo.spring.api.service.order.response.OrderResponse;
 import com.example.demo.spring.domain.order.OrderRepository;
@@ -23,10 +24,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-@ActiveProfiles("test")
 @Transactional
-@SpringBootTest
-class OrderServiceTest {
+class OrderServiceTest extends IntegrationTestSupport {
 
     @Autowired private ProductRepository productRepository;
     @Autowired private OrderService orderService;
