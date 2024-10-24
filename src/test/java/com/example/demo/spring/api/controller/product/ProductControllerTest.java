@@ -47,7 +47,6 @@ class ProductControllerTest extends ControllerTestSupport {
     }
 
 
-
     @DisplayName("신규 상품을 등록할 때 상품 타입은 필수값이다.")
     @Test
     void createProductWithoutType() throws Exception {
@@ -155,7 +154,6 @@ class ProductControllerTest extends ControllerTestSupport {
         // given
         List<ProductResponse> result = List.of();
         when(productService.getSellingProducts()).thenReturn(result);
-
 
         // when // then
         mockMvc.perform(
